@@ -1,3 +1,4 @@
+package game;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,8 +32,11 @@ public class Main{
                 //Player input section
                 if(input.equals("1")){
 
-                    currentEnemy.damage(currentPlayer.getDamage());
+                    int damageDonePlayer = currentPlayer.getDamage();
+                    currentEnemy.damage(damageDonePlayer);
                     currentPlayer.damage(currentEnemy.getDamage());
+
+                    System.out.println("\t You strike " + currentEnemy.getType() + " for " + damageDonePlayer);
 
                     if(currentPlayer.getHealth() < 0){
                         running = false;
@@ -51,11 +55,12 @@ public class Main{
                     //This is a hack to man this work. Will need more to be done
                     currentEnemy.damage(currentEnemy.getHealth()); 
                 }
-
-
             }
-
-
+            Item droppedItem = LootTable.returnDrop();
+            currentPlayer = droppedItem.addToPlayer(currentPlayer);
+            System.out.println("\tItem Dropped:");
+            System.out.println("\t " + droppedItem.getName());
+            System.out.println("\t " + droppedItem.getDescription());
     }
 }
 
