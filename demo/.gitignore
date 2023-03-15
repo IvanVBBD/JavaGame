@@ -12,9 +12,6 @@ target/
 # NetBeans project files
 nbproject/
 
-#Stop vs bs
-.vscode/
-
 # Maven build files
 pom.xml.tag
 pom.xml.releaseBackup

@@ -1,3 +1,4 @@
+package game;
 public class playerVariables {
     public static int maxHealth = 100;
     public static int playerMaxDamage = 100;

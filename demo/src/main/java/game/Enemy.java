@@ -1,11 +1,12 @@
+package game;
 import java.util.Random;
 
 public class Enemy {
 
-    Enemy(int _health, int _damage, String _type){
-        health = _health;
-        damage = _damage;
-        type = _type;
+    Enemy(int health, int damage, String type){
+        this.health = health;
+        this.damage = damage;
+        this.type = type;
     }
     private int health = 0;
     private int damage = 0;
