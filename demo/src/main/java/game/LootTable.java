@@ -10,7 +10,9 @@ public class LootTable {
     private static Random rand = new Random();
     private static List<Item> dropTable = List.of(
         new Shield(),
-        new Sword()
+        new Sword(),
+        new CursedDoll(),
+        new RizzHammer()
     );
 
     public static Item returnDrop(){

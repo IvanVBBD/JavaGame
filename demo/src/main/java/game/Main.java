@@ -46,17 +46,21 @@ public class Main{
                         System.out.println("\t1. Attack ");
                         System.out.println("\t2. Drink health Potion ");
                         System.out.println("\t3. Flee");
+                        System.out.println("\t4. View Player stats");
                         input = in.nextLine();
 
                         //Player input section
                         if(input.equals("1")){
 
                             int damageDonePlayer = currentPlayer.getDamage();
+                            int damageDoneEnemy = currentEnemy.getDamage();
                             currentEnemy.damage(damageDonePlayer);
-                            currentPlayer.damage(currentEnemy.getDamage());
-
+                            currentPlayer.damage(damageDoneEnemy);
+                            System.out.println("\t-------------------");
                             System.out.println("\t You strike " + currentEnemy.getType() + " for " + damageDonePlayer);
-
+                            System.out.println(" ");
+                            System.out.println("\t" + currentEnemy.getType() + " striked player for " + damageDoneEnemy);
+                            System.out.println("\t-------------------");
                             if(currentPlayer.getHealth() < 0){
                                 running = false;
                                 break;
@@ -73,14 +77,35 @@ public class Main{
                         }else if(input.equals("3")){
                             //This is a hack to man this work. Will need more to be done
                             currentEnemy.damage(currentEnemy.getHealth());
+                        }else if(input.equals("4")){
+                            currentPlayer.displayStats();
                         }
                     }
                     input = "";
                     Item droppedItem = LootTable.returnDrop();
-                    currentPlayer = droppedItem.addToPlayer(currentPlayer);
-                    System.out.println("\tItem Dropped:");
-                    System.out.println("\t " + droppedItem.getName());
-                    System.out.println("\t " + droppedItem.getDescription());
+                    //---------Drop Section of code------------------------------
+                    if(droppedItem.getCurse().equals(false)){
+                        System.out.println("\tItem Dropped:");
+                        System.out.println("\t " + droppedItem.getName());
+                        System.out.println("\t " + droppedItem.getDescription());
+                        System.out.println("\t Do you wish to equip the item?");
+                        System.out.println("\t1. Yes");
+                        System.out.println("\t2. No");
+                        String answer = in.nextLine();
+                        while(!answer.equals("1") || !answer.equals("2")){
+                            answer = in.nextLine();
+                        }
+                        if(answer.equals("1")){
+                            currentPlayer = droppedItem.addToPlayer(currentPlayer);
+                        }
+                    }else if(droppedItem.getCurse().equals(true)){
+                        System.out.println("\tYou have been cursed!");
+                        System.out.println("\t " + droppedItem.getName());
+                        System.out.println("\t " + droppedItem.getDescription());
+                        currentPlayer = droppedItem.addToPlayer(currentPlayer);
+                    }
+                   //--------------------------------------------------------------- 
+                    
                 } else {
                     //Narrative event handling here
                     System.out.println("----------------------------------------");

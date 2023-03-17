@@ -25,7 +25,11 @@ public class Player {
     }
 
     public void damage(int amount){
-        this.health -= amount;
+        int temp = amount - armour;
+        if(temp < 0){
+            temp = 0;
+        }
+        this.health -= temp;
     }
 
     public int getHealthPotions(){
@@ -43,5 +47,15 @@ public class Player {
     public void useHealthPotion(){
         health += playerVariables.healthPotionHealAmount;
         healthPotions--;
+    }
+
+    public void displayStats(){
+        System.out.println("\t---------Player Stats---------");
+        System.out.println("\tMax damage: " + this.getDamage());
+        System.out.println("\tArmour: " + this.getArmour());
+        System.out.println("\tHealth potions: " + this.getHealthPotions());
+        System.out.println("\tHealth: " + this.getHealth());
+        System.out.println("\t------------------------------");
+        System.out.println(" ");
     }
 }
