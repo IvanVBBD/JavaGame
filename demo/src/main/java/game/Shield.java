@@ -6,7 +6,7 @@ public class Shield extends Item {
     static Boolean curse = false;
     
     Shield(){
-        super(5, 0, 0, description, name, curse);
+        super(5, 0, 0, description, name, curse, 0);
     }
 
     @Override

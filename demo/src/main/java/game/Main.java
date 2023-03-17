@@ -84,25 +84,27 @@ public class Main{
                     input = "";
                     Item droppedItem = LootTable.returnDrop();
                     //---------Drop Section of code------------------------------
-                    if(droppedItem.getCurse().equals(false)){
-                        System.out.println("\tItem Dropped:");
-                        System.out.println("\t " + droppedItem.getName());
-                        System.out.println("\t " + droppedItem.getDescription());
-                        System.out.println("\t Do you wish to equip the item?");
-                        System.out.println("\t1. Yes");
-                        System.out.println("\t2. No");
-                        String answer = in.nextLine();
-                        while(!answer.equals("1") || !answer.equals("2")){
-                            answer = in.nextLine();
-                        }
-                        if(answer.equals("1")){
+                    if(droppedItem != null){
+                        if(droppedItem.getCurse().equals(false)){
+                            System.out.println("\tItem Dropped:");
+                            System.out.println("\t " + droppedItem.getName());
+                            System.out.println("\t " + droppedItem.getDescription());
+                            System.out.println("\t Do you wish to equip the item?");
+                            System.out.println("\t1. Yes");
+                            System.out.println("\t2. No");
+                            String answer = "3";
+                            while(!(answer.equals("1")) && !(answer.equals("2"))){
+                                answer = in.nextLine();
+                            }
+                            if(answer.equals("1")){
+                                currentPlayer = droppedItem.addToPlayer(currentPlayer);
+                            }
+                        }else if(droppedItem.getCurse().equals(true)){
+                            System.out.println("\tYou have been cursed!");
+                            System.out.println("\t " + droppedItem.getName());
+                            System.out.println("\t " + droppedItem.getDescription());
                             currentPlayer = droppedItem.addToPlayer(currentPlayer);
                         }
-                    }else if(droppedItem.getCurse().equals(true)){
-                        System.out.println("\tYou have been cursed!");
-                        System.out.println("\t " + droppedItem.getName());
-                        System.out.println("\t " + droppedItem.getDescription());
-                        currentPlayer = droppedItem.addToPlayer(currentPlayer);
                     }
                    //--------------------------------------------------------------- 
                     

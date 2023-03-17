@@ -1,12 +1,12 @@
 package game;
 
 public class RizzHammer extends Item {
-    static String description = "A sharp sword to cut those who need to be cut";
-    static String name = "Sword";
+    static String description = "All we know is Kayden has never wielded this weapon";
+    static String name = "Rizz Hamer";
     static Boolean curse = false;
 
     RizzHammer(){
-        super(0, -10, 20,description,name,curse);
+        super(0, -10, 20,description,name,curse,0);
     }
 
     @Override
