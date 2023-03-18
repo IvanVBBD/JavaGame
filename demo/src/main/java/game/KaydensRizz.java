@@ -19,6 +19,7 @@ public class KaydensRizz extends Item{
         player.setdamage(player.getDamage() + this.getDamage());
         player.setCriticalHitChance(player.getCriticalChance() + this.getCriticalChance());
         player.setHealth(player.getHealth() + this.getHealth());
+        player.setArmour(player.getArmour() + this.getArmour());
 
         return player;
     }

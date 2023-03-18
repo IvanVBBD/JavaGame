@@ -1,22 +1,20 @@
 package game;
 import java.util.Random;
 
-public class Enemy {
+public abstract class Enemy {
 
     Enemy(int health, int damage, String type){
         this.health = health;
         this.damage = damage;
         this.type = type;
     }
-    private int health = 0;
-    private int damage = 0;
+    protected int health = 0;
+    protected int damage = 0;
     private String type = "";
     private Random rand = new Random();
 
-    public void damage(int _amount){
-        health -= _amount;
-    }
-
+    public abstract void damage(int amount);
+       
     public int getHealth(){
         return health;
     }
@@ -28,4 +26,6 @@ public class Enemy {
     public int getDamage(){
         return rand.nextInt(damage);  
     }
+
+   
 }

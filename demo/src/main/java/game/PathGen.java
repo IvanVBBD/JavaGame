@@ -17,7 +17,7 @@ public class PathGen {
         for (int i = 0; i < 3; i++) {
             int EventVariant = randGen.nextInt(3);
             if (randGen.nextInt(2) > 0) {
-                Enemy enemy = new Enemy(randGen.nextInt(enemyVariables.maxHealth),randGen.nextInt(enemyVariables.maxDamage),enemyVariables.types[EventVariant]);
+                Enemy enemy = EnemyManager.getEnemy(enemyVariables.types[EventVariant]);
                 newPath.add(new CombatEvent(EventPreview.previews[EventVariant],enemy));
             } else {
                 newPath.add(new NarrativeEvent(EventPreview.previews[EventVariant],Stories.storyIntros[EventVariant]));
