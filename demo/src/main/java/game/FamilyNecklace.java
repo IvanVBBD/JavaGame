@@ -15,8 +15,7 @@ public class FamilyNecklace extends Item{
     }
 
     @Override
-    public Player addToPlayer(Player player){
-        player.setCriticalHitChance(player.getCriticalChance() + this.getCriticalChance());
-        return player;
+    public void addToPlayer(){
+        Main.player.setCriticalHitChance(Main.player.getCriticalChance() + this.getCriticalChance());
     }
 }

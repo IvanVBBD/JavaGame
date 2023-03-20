@@ -1,22 +1,22 @@
 package game;
+import java.util.Random;
 
 public abstract class Event {
-    public String getPreview() {
-        return preview;
-    }
-
-    public void setPreview(String preview) {
-        this.preview = preview;
-    }
-
+    private static String[] previews = {
+        "You hear a creaking sound coming from the passage",
+        "You catch a glimpse of green in the distance",
+        "A muffled groan drifts to your ears"
+    };
     private String preview;
-    public Event (String preview) {
-        this.preview = preview;
+
+    public Event() {
+        Random randGen = new Random();
+        this.preview = previews[randGen.nextInt(previews.length)];
     }
-    public Enemy getEnemy() {
-        return null;
-    }
-    public String getStory() {
-        return null;
+
+    public void handleEvent() {
+        System.out.println("----------------------------------------"
+                          + preview
+                          +"----------------------------------------");
     }
 }

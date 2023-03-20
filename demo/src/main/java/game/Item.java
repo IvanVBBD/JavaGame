@@ -48,6 +48,6 @@ public abstract class Item {
         return this.criticalHitChance;
     }
 
-    public abstract Player addToPlayer(Player player);
+    public abstract void addToPlayer();
 
 }

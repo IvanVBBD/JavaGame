@@ -1,122 +1,43 @@
 package game;
-import java.util.Random;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.ArrayDeque;
+import java.util.Scanner;
 
-public class Main{
-    
+public class Main {
+    public static Player player = new Player();
 
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        Random randGen = new Random();
-        Player currentPlayer = new Player();
-        ArrayList<Event> playerHistory = new ArrayList();
-        PathGen choice;
-        ArrayDeque<Event> currentPath;
-        String input = "";
-        boolean running = true;
-        System.out.println("You approach a dark gloomy forests edge...");
+    public static void main(String[] args) {
+        startGame();
+        String difficulty = Path.getDifficulty(player);
+        ArrayDeque<Event> path = Path.generate(difficulty);
+        ArrayList<Event> playerHistory = new ArrayList<Event>();
 
-
-        //Main game loop here
-        GAME:
-        while(running){
-            choice = new PathGen();
-            //Display sneak peeks and request choice here
-            choice.getPaths().forEach((K,V) -> System.out.println(K+". "+V.peekFirst().getPreview()));
-            while (!(input.equals("1") || input.equals("2") || input.equals("3"))) {
-                input = in.nextLine();
-            }
-            currentPath = choice.getPaths().get(input).clone();
-            input = "";
-            while(currentPath.peek() != null){
-                //Implement event handling here
-                System.out.println("----------------------------------------");
-                System.out.println(currentPath.peekFirst().getPreview());
-                System.out.println("----------------------------------------");
-                if (currentPath.peekFirst() instanceof CombatEvent){
-                    //Combat event handling here
-                    Enemy currentEnemy = currentPath.peekFirst().getEnemy();
-                    System.out.println("\t#" + currentEnemy.getType() + enemyVariables.enemyIntro[randGen.nextInt(enemyVariables.enemyIntro.length)] + "#\n");
-                    while(currentEnemy.getHealth() > 0){
-                        System.out.println("\tYour Health: " + currentPlayer.getHealth());
-                        System.out.println("\tEnemy Health: " + currentEnemy.getHealth());
-                        System.out.println("\n\tYour actions: ");
-                        System.out.println("\t1. Attack ");
-                        System.out.println("\t2. Drink health Potion ");
-                        System.out.println("\t3. Flee");
-                        System.out.println("\t4. View Player stats");
-                        input = in.nextLine();
-
-                        //Player input section
-                        if(input.equals("1")){
-
-                            int damageDonePlayer = currentPlayer.getDamage();
-                            int damageDoneEnemy = currentEnemy.getDamage();
-                            currentEnemy.damage(damageDonePlayer);
-                            currentPlayer.damage(damageDoneEnemy);
-                            System.out.println("\t-------------------");
-                            System.out.println("\t You strike " + currentEnemy.getType() + " for " + damageDonePlayer);
-                            System.out.println(" ");
-                            System.out.println("\t" + currentEnemy.getType() + " striked player for " + damageDoneEnemy);
-                            System.out.println("\t-------------------");
-                            if(currentPlayer.getHealth() < 0){
-                                running = false;
-                                break;
-                            }
-
-                        }else if(input.equals("2")){
-                            if(currentPlayer.getHealthPotions() > 0){
-                                currentPlayer.useHealthPotion();
-                                System.out.println("\tYou have " + currentPlayer.getHealthPotions() + " health potions left");
-                            }else{
-                                System.out.println("\tOut of health potions!");
-                            }
-
-                        }else if(input.equals("3")){
-                            //This is a hack to man this work. Will need more to be done
-                            currentEnemy.damage(currentEnemy.getHealth());
-                        }else if(input.equals("4")){
-                            currentPlayer.displayStats();
-                        }
-                    }
-                    input = "";
-                    Item droppedItem = LootTable.returnDrop();
-                    //---------Drop Section of code------------------------------
-                    if(droppedItem != null){
-                        if(droppedItem.getCurse().equals(false)){
-                            System.out.println("\tItem Dropped:");
-                            System.out.println("\t " + droppedItem.getName());
-                            System.out.println("\t " + droppedItem.getDescription());
-                            System.out.println("\t Do you wish to equip the item?");
-                            System.out.println("\t1. Yes");
-                            System.out.println("\t2. No");
-                            String answer = "3";
-                            while(!(answer.equals("1")) && !(answer.equals("2"))){
-                                answer = in.nextLine();
-                            }
-                            if(answer.equals("1")){
-                                currentPlayer = droppedItem.addToPlayer(currentPlayer);
-                            }
-                        }else if(droppedItem.getCurse().equals(true)){
-                            System.out.println("\tYou have been cursed!");
-                            System.out.println("\t " + droppedItem.getName());
-                            System.out.println("\t " + droppedItem.getDescription());
-                            currentPlayer = droppedItem.addToPlayer(currentPlayer);
-                        }
-                    }
-                   //--------------------------------------------------------------- 
-                    
-                } else {
-                    //Narrative event handling here
-                    System.out.println("----------------------------------------");
-                    System.out.println(currentPath.peekFirst().getStory());
-                    System.out.println("----------------------------------------");
-                }
-                playerHistory.add(currentPath.remove());
-            }
+        while(player.isAlive() && path.peek() != null) {
+            path.peek().handleEvent();
+            playerHistory.add(path.remove());
+        }
+        endGame();
     }
-}
 
+    private static void startGame() {
+        System.out.println("The sun is bright as you come to the outskirts of your village, eager to embark on your adventure. "
+                            + "Many adventurers have stood where you are today, making the first step on the road ahead. "
+                            + "There is a choice to be made on which direction to take. "
+                            + "Such a seemingly small decision can change your entire future.");
+    }
+
+    private static void endGame() {
+        if (player.isAlive()) {
+            System.out.println("\nYou have made it to the end of your journey."
+                                + "\nYou lay upon the ground and close your eyes to rest for a while."
+                                + "\nYou dream of a vibrant journey.");
+        } else {
+            System.out.println("\nYou died upon your journey."
+                                + "\nYour family back in the village never finds out what happened to you.");
+        }
+        try (Scanner in = new Scanner(System.in)) {
+            in.nextLine();
+        }
+        System.exit(0);
+    }
 }

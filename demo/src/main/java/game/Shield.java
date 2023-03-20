@@ -10,8 +10,7 @@ public class Shield extends Item {
     }
 
     @Override
-    public Player addToPlayer(Player player){
-        player.setArmour(player.getArmour() + this.getArmour());
-        return player;
+    public void addToPlayer(){
+        Main.player.setArmour(Main.player.getArmour() + this.getArmour());
     }
 }

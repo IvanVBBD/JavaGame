@@ -10,8 +10,7 @@ public class CursedDoll extends Item {
     }
 
     @Override
-    public Player addToPlayer(Player player){
-        player.setHealth(player.getHealth() + this.getHealth());
-        return player;
+    public void addToPlayer(){
+        Main.player.setHealth(Main.player.getHealth() + this.getHealth());
     }
 }

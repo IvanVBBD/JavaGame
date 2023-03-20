@@ -15,10 +15,8 @@ public class GiantsHammer extends Item{
     }
 
     @Override
-    public Player addToPlayer(Player player){
-        player.setdamage(player.getDamage() + this.getDamage());
-        player.setHealth(player.getHealth() + this.getHealth());
-
-        return player;
+    public void addToPlayer(){
+        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setHealth(Main.player.getHealth() + this.getHealth());
     }
 }

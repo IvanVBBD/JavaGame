@@ -1,5 +1,6 @@
 package game;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Player {
     private int health = playerVariables.maxHealth;
@@ -7,7 +8,16 @@ public class Player {
     private int damage = 10;
     private int armour = 0;
     private int criticalHitChance = 0;
+    private boolean isAlive = true;
     Random rand = new Random();
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void died() {
+        isAlive = false;
+    }
 
     public void setHealth(int amount){
         this.health = amount;
@@ -76,5 +86,17 @@ public class Player {
         System.out.println("\tHealth: " + this.getHealth());
         System.out.println("\t------------------------------");
         System.out.println(" ");
+    }
+
+    public String getInput(int numberOfOptions) {
+        String input = "";
+        try (Scanner in = new Scanner(System.in)) {
+            //while input does not match option numbers (single digit) and whitespaces
+            while (!(input.matches("^(\b[1-" + numberOfOptions + "]\b){1}$"))) { 
+                input = in.nextLine();
+            }
+        }
+        input.replaceAll("\\s", ""); //remove whitespaces
+        return input;
     }
 }

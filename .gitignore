@@ -14,6 +14,7 @@ nbproject/
 
 #Stop vs bs
 .vscode/
+.vs/
 
 # Maven build files
 pom.xml.tag

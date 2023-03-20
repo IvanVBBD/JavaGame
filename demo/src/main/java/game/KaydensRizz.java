@@ -15,12 +15,10 @@ public class KaydensRizz extends Item{
     }
 
     @Override
-    public Player addToPlayer(Player player){
-        player.setdamage(player.getDamage() + this.getDamage());
-        player.setCriticalHitChance(player.getCriticalChance() + this.getCriticalChance());
-        player.setHealth(player.getHealth() + this.getHealth());
-        player.setArmour(player.getArmour() + this.getArmour());
-
-        return player;
+    public void addToPlayer(){
+        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setCriticalHitChance(Main.player.getCriticalChance() + this.getCriticalChance());
+        Main.player.setHealth(Main.player.getHealth() + this.getHealth());
+        Main.player.setArmour(Main.player.getArmour() + this.getArmour());
     }
 }

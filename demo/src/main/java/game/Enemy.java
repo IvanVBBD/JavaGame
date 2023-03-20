@@ -1,4 +1,5 @@
 package game;
+
 import java.util.Random;
 
 public abstract class Enemy {
@@ -26,6 +27,4 @@ public abstract class Enemy {
     public int getDamage(){
         return rand.nextInt(damage);  
     }
-
-   
 }
