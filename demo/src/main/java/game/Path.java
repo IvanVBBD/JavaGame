@@ -12,7 +12,7 @@ public class Path {
                             + "\n\t1: The well-worn path is longer but safer."
                             + "\n\t2: The path through the forest is faster but fraught with danger."
                             + "\n\t3: The valley is shrouded in mist, you know not what awaits you.");
-        return player.getInput(3);
+        return player.getInput(new String[] {"1","2","3"});
     }
     
     public static ArrayDeque<Event> generate(String difficulty) {

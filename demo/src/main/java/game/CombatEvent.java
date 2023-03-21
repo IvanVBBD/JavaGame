@@ -13,10 +13,10 @@ public class CombatEvent extends Event {
     @Override
     public void handleEvent() {
         super.handleEvent();
-        System.out.println("\t#" + enemyIntro + "#\n");
+        System.out.println("\n#" + enemyIntro + "#\n");
         while(enemy.getHealth() > 0 && player.isAlive()){
             outputStatus();
-            String action = player.getInput(4);
+            String action = player.getInput(new String[] {"1","2","3","4"});
             handle(action);
         }
         if (player.isAlive()) {
@@ -25,13 +25,13 @@ public class CombatEvent extends Event {
     }
 
     private void outputStatus() {
-        System.out.println("\tYour Health: " + player.getHealth()
-                            + "\tEnemy Health: " + enemy.getHealth()
-                            + "\n\tYour Actions: "
-                            + "\t1. Attack "
-                            + "\t2. Drink Health Potion "
-                            + "\t3. Flee"
-                            + "\t4. View Player Stats");
+        System.out.println("Your Health: " + player.getHealth()
+                            + "\nEnemy Health: " + enemy.getHealth()
+                            + "\nYour Actions: "
+                            + "\n\t1. Attack "
+                            + "\n\t2. Drink Health Potion "
+                            + "\n\t3. Flee"
+                            + "\n\t4. View Player Stats");
     }
 
     private void handle(String action) {
@@ -103,7 +103,7 @@ public class CombatEvent extends Event {
         System.out.println("\t Do you wish to equip the item?"
                             + "\t1. Yes"
                             + "\t2. No");
-        String input = player.getInput(2);
+        String input = player.getInput(new String[] {"1","2"});
         if(input.equals("1")){
             equip(droppedItem);
         }

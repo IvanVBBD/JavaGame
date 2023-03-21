@@ -1,4 +1,5 @@
 package game;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -88,15 +89,12 @@ public class Player {
         System.out.println(" ");
     }
 
-    public String getInput(int numberOfOptions) {
+    public String getInput(String[] options) {
         String input = "";
-        try (Scanner in = new Scanner(System.in)) {
-            //while input does not match option numbers (single digit) and whitespaces
-            while (!(input.matches("^(\b[1-" + numberOfOptions + "]\b){1}$"))) { 
-                input = in.nextLine();
-            }
+        Scanner in = new Scanner(System.in);
+        while (!(Arrays.asList(options).contains(input))) { 
+            input = in.nextLine().replaceAll("\\s", "");
         }
-        input.replaceAll("\\s", ""); //remove whitespaces
         return input;
     }
 }
