@@ -1,0 +1,80 @@
+
+import java.util.Scanner;
+
+public class ForestAdventure {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean gameOver = false;
+        Player player = new Player("John", 10, 10, 0); // Create a new player with 10 health and 10 damage.
+
+        System.out.println("Welcome to the Forest Adventure game!\n");
+
+        while (!gameOver) {
+            System.out.println("You are in a forest. What would you like to do?");
+            System.out.println("1. Explore");
+            System.out.println("2. Rest");
+            System.out.println("3. Check inventory");
+            System.out.println("4. Quit");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("You explore the forest and find a clearing.");
+                    int enemyHealth = 5;
+                    Enemy enemy = new Enemy("Goblin", enemyHealth, 2);
+                    System.out.println("You encounter a " + enemy.getName() + " with " + enemy.getHealth() + " health!");
+                    while (enemy.getHealth() > 0 && player.getHealth() > 0) {
+                        System.out.println("What would you like to do?");
+                        System.out.println("1. Attack");
+                        System.out.println("2. Run");
+                        int combatChoice = scanner.nextInt();
+
+                        if (combatChoice == 1) {
+                            int damageDealt = player.attack();
+                            enemy.takeDamage(damageDealt);
+                            System.out.println("You deal " + damageDealt + " damage to the " + enemy.getName() + "!");
+                            if (enemy.getHealth() <= 0) {
+                                System.out.println("You defeat the " + enemy.getName() + "!");
+                                player.addExperience(5);
+                                break;
+                            }
+                            int damageTaken = enemy.attack();
+                            player.takeDamage(damageTaken);
+                            System.out.println("The " + enemy.getName() + " deals " + damageTaken + " damage to you! You have " + player.getHealth() + " health remaining.");
+                        } else if (combatChoice == 2) {
+                            System.out.println("You try to run away...");
+                            int escapeChance = (int)(Math.random() * 100);
+                            if (escapeChance < 50) {
+                                System.out.println("You successfully escape!");
+                                break;
+                            } else {
+                                int damageTaken = enemy.attack();
+                                player.takeDamage(damageTaken);
+                                System.out.println("You fail to escape and the " + enemy.getName() + " deals " + damageTaken + " damage to you! You have " + player.getHealth() + " health remaining.");
+                            }
+                        }
+                    }
+                    if (player.getHealth() <= 0) {
+                        System.out.println("You have been defeated. Game over.");
+                        gameOver = true;
+                    }
+                    break;
+                case 2:
+                    System.out.println("You rest and regain some health.");
+                    player.rest();
+                    break;
+                case 3:
+                    System.out.println("Inventory: " + player.getInventory());
+                    break;
+                case 4:
+                    System.out.println("Thanks for playing!");
+                    gameOver = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+        }
+    }
+}
