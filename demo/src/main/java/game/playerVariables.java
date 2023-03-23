@@ -5,6 +5,6 @@ public class playerVariables {
     public static int maxHealthPotions = 5;
     public static int healthPotionHealAmount = 30;
     public static int healthPotionDropChance = 20;
-    public static int maxItems = 5;
+    public static int maxItems = 500;
 
 }
