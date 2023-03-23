@@ -37,9 +37,9 @@ public class NarrativeEvent extends Event {
 
     @Override
     public void handleEvent() {
-        System.out.println("\n---"
+        System.out.println("----------------------------------------"
                          + storyIntros[variant]
-                         + "---");
+                         + "----------------------------------------");
         System.out.println("What next?"
                         +"\n\t 1. "+actions[variant][0]
                         +"\n\t 2. "+actions[variant][1]);
@@ -49,10 +49,10 @@ public class NarrativeEvent extends Event {
 
     private void getRare() {
         Item droppedItem = LootTable.rareRoll();
-        System.out.println("\tYou have gained:"
+        System.out.println("You have gained:"
                 + "\n\t " + droppedItem.getName()
                 + "\n\t " + droppedItem.getDescription());
-        System.out.println("\t Do you wish to equip the item?"
+        System.out.println("Do you wish to equip the item?"
                 + "\n\t1. Yes"
                 + "\n\t2. No");
         String input = player.getInput(new String[] {"1","2"});
