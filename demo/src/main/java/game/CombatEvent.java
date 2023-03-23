@@ -108,9 +108,9 @@ public class CombatEvent extends Event {
             return;
         }
         System.out.println("\tItem Dropped:"
-                            + "\n\t " + droppedItem.getName()
-                            + "\n\t " + droppedItem.getDescription());
-        System.out.println(droppedItem.displayItemStats());
+                            + "\n\t\t" + droppedItem.getName()
+                            + "\n\t\t" + droppedItem.getDescription());
+        System.out.println("\t" + droppedItem.displayItemStats());
         if (droppedItem.getCurse().equals(false)) {
             handleNormalItem(droppedItem);
         } else if(droppedItem.getCurse().equals(true)){
@@ -119,9 +119,9 @@ public class CombatEvent extends Event {
     }
 
     private void handleNormalItem(Item droppedItem) {
-        System.out.println("\t Do you wish to equip the item?"
-                            + "\n\t1. Yes"
-                            + "\n\t2. No");
+        System.out.println("\tDo you wish to equip the item?"
+                            + "\n\t\t1. Yes"
+                            + "\n\t\t2. No");
         String input = player.getInput(new String[] {"1","2"});
         if(input.equals("1")){
             equip(droppedItem);
