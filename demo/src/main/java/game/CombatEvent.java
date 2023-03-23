@@ -2,19 +2,11 @@ package game;
 
 import java.util.Random;
 
-import game.EnemyManager.enemyTypes;
-
 public class CombatEvent extends Event {
     private Enemy enemy;
     private String enemyIntro;
     private Player player = Main.player;
     private Boolean fleed = false;
-
-    public CombatEvent(enemyTypes type) {
-        super();
-        enemy = EnemyManager.getEnemy(type);
-        enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
-    }
 
     public CombatEvent(){
         enemy = EnemyManager.getEnemy();
