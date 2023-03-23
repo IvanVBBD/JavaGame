@@ -14,9 +14,5 @@ public abstract class Event {
         this.preview = previews[randGen.nextInt(previews.length)];
     }
 
-    public void handleEvent() {
-        System.out.println("----------------------------------------"
-                          + preview
-                          +"----------------------------------------");
-    }
+    public abstract void handleEvent();
 }

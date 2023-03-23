@@ -74,6 +74,13 @@ public class Player {
         healthPotions--;
     }
 
+    public void addPotion(int number){
+        healthPotions += number;
+        if (healthPotions < 0) {
+            healthPotions = 0;
+        }
+    }
+
     public void setCriticalHitChance(int criticalHitChance){
        this.criticalHitChance += criticalHitChance; 
     }

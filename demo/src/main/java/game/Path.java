@@ -30,7 +30,7 @@ public class Path {
         Random randGen = new Random();
         ArrayDeque<Event> path = new ArrayDeque<Event>(MAX_EVENTS);
         for (int i = 0; i < MIN_EVENTS; i++) {
-            if (randGen.nextInt(100) < 80) {
+            if (randGen.nextInt(100) < 70) {
                 addNarrativeEventTo(path);
             } else {
                 addCombatEventTo(path);
@@ -43,7 +43,7 @@ public class Path {
         Random randGen = new Random();
         ArrayDeque<Event> path = new ArrayDeque<Event>(MIN_EVENTS);
         for (int i = 0; i < MIN_EVENTS; i++) {
-            if (randGen.nextInt(100) < 80) {
+            if (randGen.nextInt(100) < 70) {
                 addCombatEventTo(path);
             } else {
                 addNarrativeEventTo(path);
@@ -73,7 +73,8 @@ public class Path {
     }
 
     private static ArrayDeque<Event> addNarrativeEventTo(ArrayDeque<Event> path) {
-        path.add(new NarrativeEvent());
+        Random randGen = new Random();
+        path.add(new NarrativeEvent(randGen.nextInt(3)));
         return path;
     }
 
