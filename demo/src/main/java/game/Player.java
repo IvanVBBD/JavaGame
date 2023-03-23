@@ -102,13 +102,12 @@ public class Player {
     }
 
     public void viewItems(){
-        System.out.println("\t---------Player Inventory---------");
+        System.out.println("---------Player Inventory---------");
         String result = currentEquipped.stream()
-                .map(s -> s.getName() + "\n\t" + s.displayItemStats() + "\n")
+                .map(s -> s.getName() + "\n" + s.displayItemStats() + "\n")
                 .reduce("", (s1, s2) -> s1 + s2);
-        result = "\t" + result;
         System.out.println(result);
-        System.out.println("\t----------------------------------");
+        System.out.println("----------------------------------");
     }
 
     public String getInput(String[] options) {
