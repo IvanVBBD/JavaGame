@@ -5,7 +5,9 @@ import game.EnemyManager.enemyTypes;
 
 public class Skeleton extends Enemy {
 
-    private static String[] previews = {"Skele intro 1", "Skele intro 2", "Skele into 3"};
+    private static String[] previews = {"You hear something rattling.", 
+                                        "Skele intro 2", 
+                                        "Skele into 3"};
     
     static int healthSetting = 5;
     static int damageSetting = 15;

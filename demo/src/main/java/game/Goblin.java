@@ -6,7 +6,9 @@ import game.EnemyManager.enemyTypes;
 
 public class Goblin extends Enemy {
 
-    private static String[] previews = {"Goblin intro 1", "Goblin intro 2", "Goblin into 3"};
+    private static String[] previews = {"You hear an annoying high-pitched voice.", 
+                                        "You catch a glimpse of something with a short stature.", 
+                                        "Goblin into 3"};
     
     static int health = 20;
     static int damage = 10;
