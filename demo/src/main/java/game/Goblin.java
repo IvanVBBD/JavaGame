@@ -6,7 +6,7 @@ import game.EnemyManager.enemyTypes;
 
 public class Goblin extends Enemy {
 
-    private static String[] intros = {"Goblin intro 1", "Goblin intro 2", "Goblin into 3"};
+    private static String[] previews = {"Goblin intro 1", "Goblin intro 2", "Goblin into 3"};
     
     static int health = 20;
     static int damage = 10;
@@ -14,14 +14,14 @@ public class Goblin extends Enemy {
     static int goblinLuckThresold = 10;
     static Random rand = new Random();
 
-    private String intro;
+    private String preview;
 
     Goblin(){
         super(health,damage,Type);
-        intro = intros[rand.nextInt(3)];
+        preview = previews[rand.nextInt(3)];
     }
 
-    public String getIntro() {return intro;}
+    public String getPreview() {return preview;}
 
     @Override
     public void damage(int amount){

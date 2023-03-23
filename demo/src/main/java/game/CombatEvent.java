@@ -17,15 +17,15 @@ public class CombatEvent extends Event {
     }
 
     public CombatEvent(){
-        super();
         enemy = EnemyManager.getEnemy();
+        super.preview = enemy.getPreview();
         enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
     }
 
     @Override
     public void handleEvent() {
         super.handleEvent();
-        System.out.println("\n#" + enemy.getIntro() + "#\n");
+        System.out.println("\n#" + enemyIntro + "#\n");
         while(enemy.getHealth() > 0 && player.isAlive()){
             outputStatus();
             String action = player.getInput(new String[] {"1","2","3","4"});

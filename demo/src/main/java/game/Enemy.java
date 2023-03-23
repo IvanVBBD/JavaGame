@@ -30,5 +30,5 @@ public abstract class Enemy {
         return rand.nextInt(damage);  
     }
 
-    public abstract String getIntro();
+    public abstract String getPreview();
 }

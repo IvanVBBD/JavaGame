@@ -5,7 +5,7 @@ import game.EnemyManager.enemyTypes;
 
 public class Skeleton extends Enemy {
 
-    private static String[] intros = {"Skele intro 1", "Skele intro 2", "Skele into 3"};
+    private static String[] previews = {"Skele intro 1", "Skele intro 2", "Skele into 3"};
     
     static int healthSetting = 5;
     static int damageSetting = 15;
@@ -13,14 +13,14 @@ public class Skeleton extends Enemy {
     static Random rand = new Random();
     static int skellySkill = 25;
 
-    private String intro;
+    private String preview;
 
     Skeleton(){
         super(healthSetting,damageSetting,Type);
-        intro = intros[rand.nextInt(3)];
+        preview = previews[rand.nextInt(3)];
     }
 
-    public String getIntro() {return intro;}
+    public String getPreview() {return preview;}
 
     @Override
     public void damage(int amount){

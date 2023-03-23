@@ -9,7 +9,7 @@ public abstract class Event {
         "You catch a glimpse of green in the distance",
         "A muffled groan drifts to your ears"
     };
-    private String preview;
+    protected String preview;
 
     public Event() {
         Random randGen = new Random();
