@@ -6,7 +6,8 @@ import game.EnemyManager.enemyTypes;
 
 public class Goblin extends Enemy {
 
-    private static String[] previews = {"Goblin intro 1", "Goblin intro 2", "Goblin into 3"};
+    private static String[] previews = {"You hear an annoying high-pitched voice.", 
+                                        "You catch a glimpse of something with a short stature."};
     
     static int health = 20;
     static int damage = 10;
@@ -18,7 +19,7 @@ public class Goblin extends Enemy {
 
     Goblin(){
         super(health,damage,Type);
-        preview = previews[rand.nextInt(3)];
+        preview = previews[rand.nextInt(2)];
     }
 
     public String getPreview() {return preview;}

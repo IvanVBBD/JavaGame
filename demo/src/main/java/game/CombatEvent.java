@@ -2,19 +2,11 @@ package game;
 
 import java.util.Random;
 
-import game.EnemyManager.enemyTypes;
-
 public class CombatEvent extends Event {
     private Enemy enemy;
     private String enemyIntro;
     private Player player = Main.player;
     private Boolean fleed = false;
-
-    public CombatEvent(enemyTypes type) {
-        super();
-        enemy = EnemyManager.getEnemy(type);
-        enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
-    }
 
     public CombatEvent(){
         enemy = EnemyManager.getEnemy();
@@ -24,9 +16,8 @@ public class CombatEvent extends Event {
 
     @Override
     public void handleEvent() {
-        super.handleEvent();
         System.out.println("\n#" + enemyIntro + "#\n");
-        while(enemy.getHealth() > 0 && player.isAlive()){
+        while(enemy.getHealth() >= 0 && player.isAlive()){
             outputStatus();
             String action = player.getInput(new String[] {"1","2","3","4","5"});
             handle(action);
@@ -62,7 +53,7 @@ public class CombatEvent extends Event {
                 viewPlayerStats();
                 break;
             case "5":
-                System.out.println(Main.player.viewItems());
+                Main.player.viewItems();
                 break;
           } 
     }
@@ -72,12 +63,12 @@ public class CombatEvent extends Event {
         int enemyDamage = enemy.getDamage();
         enemy.damage(playerDamage);
         player.damage(enemyDamage);
-        System.out.println("\t-------------------");
-        System.out.println("\t You strike " + enemy.getType() + " for " + playerDamage);
+        System.out.println("-------------------");
+        System.out.println("You strike " + enemy.getType() + " for " + playerDamage);
         System.out.println(" ");
-        System.out.println("\t" + enemy.getType() + " striked player for " + enemyDamage);
-        System.out.println("\t-------------------");
-        if(player.getHealth() < 0){
+        System.out.println(enemy.getType() + " striked player for " + enemyDamage);
+        System.out.println("-------------------");
+        if(player.getHealth() <= 0){
             player.died();
         }
     }
@@ -115,9 +106,9 @@ public class CombatEvent extends Event {
         if (droppedItem == null) {
             return;
         }
-        System.out.println("\tItem Dropped:"
-                            + "\t " + droppedItem.getName()
-                            + "\t " + droppedItem.getDescription());
+        System.out.println("Item Dropped:"
+                            + "\n\t" + droppedItem.getName()
+                            + "\n\t" + droppedItem.getDescription());
         System.out.println(droppedItem.displayItemStats());
         if (droppedItem.getCurse().equals(false)) {
             handleNormalItem(droppedItem);
@@ -127,9 +118,9 @@ public class CombatEvent extends Event {
     }
 
     private void handleNormalItem(Item droppedItem) {
-        System.out.println("\t Do you wish to equip the item?"
-                            + "\t1. Yes"
-                            + "\t2. No");
+        System.out.println("Do you wish to equip the item?"
+                            + "\n\t1. Yes"
+                            + "\n\t2. No");
         String input = player.getInput(new String[] {"1","2"});
         if(input.equals("1")){
             equip(droppedItem);

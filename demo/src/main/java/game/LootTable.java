@@ -30,6 +30,10 @@ public class LootTable {
         new KaydensRizz()
     );
 
+    public static Item rareRoll(){
+        return rareDropTable.get(rand.nextInt(rareDropTable.size()));
+    };
+
     public static Item returnDrop(){
         int chance = rand.nextInt(100);
         if(chance >= rareThresold){

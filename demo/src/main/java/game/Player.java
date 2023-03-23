@@ -84,6 +84,13 @@ public class Player {
         healthPotions--;
     }
 
+    public void addPotion(int number){
+        healthPotions += number;
+        if (healthPotions < 0) {
+            healthPotions = 0;
+        }
+    }
+
     public void setCriticalHitChance(int criticalHitChance){
        this.criticalHitChance += criticalHitChance; 
     }
@@ -111,12 +118,13 @@ public class Player {
         System.out.println(" ");
     }
 
-    public String viewItems(){
+    public void viewItems(){
+        System.out.println("---------Player Inventory---------");
         String result = currentEquipped.stream()
-                .map(s -> s.getName() + "\n\t" + s.displayItemStats())
+                .map(s -> s.getName() + "\n" + s.displayItemStats() + "\n")
                 .reduce("", (s1, s2) -> s1 + s2);
-        result = "\t" + result;
-        return result;
+        System.out.println(result);
+        System.out.println("----------------------------------");
     }
 
     public String getInput(String[] options) {

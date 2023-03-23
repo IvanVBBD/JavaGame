@@ -4,7 +4,9 @@ import java.util.Random;
 import game.EnemyManager.enemyTypes;
 
 public class Zombie extends Enemy {
-    private static String[] previews = {"Zombie intro 1", "Zombie intro 2", "Zombie into 3"};
+    private static String[] previews = {"You smell something rotting.", 
+                                        "You hear a muffled groan.", 
+                                        "You catch a glimpse of something green."};
 
     static int healthSetting = 30;
     static int damageSetting = 1;
@@ -30,9 +32,9 @@ public class Zombie extends Enemy {
     @Override
     public int getDamage(){
         stench++;
-        System.out.println("\t============");
-        System.out.println("\tThe zombies stench grows worse with each engagement!");
-        System.out.println("\t============");
+        System.out.println("============");
+        System.out.println("The zombies stench grows worse with each engagement!");
+        System.out.println("============");
         return stench*super.damage*zombieMultiplyer;
 
     }

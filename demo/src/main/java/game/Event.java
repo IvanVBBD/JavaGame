@@ -1,8 +1,6 @@
 package game;
 import java.util.Random;
 
-import game.EnemyManager.enemyTypes;
-
 public abstract class Event {
     private static String[] previews = {
         "You hear a creaking sound coming from the passage",
@@ -16,9 +14,5 @@ public abstract class Event {
         this.preview = previews[randGen.nextInt(previews.length)];
     }
 
-    public void handleEvent() {
-        System.out.println("----------------------------------------"
-                          + preview
-                          +"----------------------------------------");
-    }
+    public abstract void handleEvent();
 }
