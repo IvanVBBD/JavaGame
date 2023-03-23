@@ -54,7 +54,7 @@ public class Path {
 
     private static ArrayDeque<Event> generateRandomPath() {
         Random randGen = new Random();
-        int numberOfEvents = randGen.nextInt(MAX_EVENTS + 1) + MIN_EVENTS;
+        int numberOfEvents = randGen.nextInt(100 + 1) + MAX_EVENTS;
         ArrayDeque<Event> path = new ArrayDeque<Event>(numberOfEvents);
         for (int i = 0; i < numberOfEvents; i++) {
             addRandomEventTo(path);
