@@ -60,13 +60,19 @@ public class CombatEvent extends Event {
 
     private void attack() {
         int playerDamage = player.getDamage();
-        int enemyDamage = enemy.getDamage();
+        int placeHolderEnemyDamage = 0;
         enemy.damage(playerDamage);
-        player.damage(enemyDamage);
+        if(enemy.getHealth() > 0){
+            int enemyDamage = enemy.getDamage();
+            placeHolderEnemyDamage = enemyDamage;
+            player.damage(enemyDamage);
+        }
         System.out.println("-------------------");
         System.out.println("You strike " + enemy.getType() + " for " + playerDamage);
         System.out.println(" ");
-        System.out.println(enemy.getType() + " striked player for " + enemyDamage);
+        if(enemy.getHealth() > 0){
+            System.out.println(enemy.getType() + " striked player for " + placeHolderEnemyDamage);
+        }
         System.out.println("-------------------");
         if(player.getHealth() <= 0){
             player.died();
