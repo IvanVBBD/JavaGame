@@ -72,7 +72,7 @@ public class CombatEvent extends Event {
         System.out.println("You strike " + enemy.getType() + " for " + playerDamage);
         System.out.println(" ");
         if(enemy.getHealth() > 0){
-            System.out.println(enemy.getType() + " striked player for " + placeHolderEnemyDamage);
+            System.out.println(enemy.getType() + " striked player for " + (placeHolderEnemyDamage - Main.player.getArmour()));
         }
         System.out.println("-------------------");
         if(player.getHealth() <= 0){
