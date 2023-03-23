@@ -29,4 +29,6 @@ public abstract class Enemy {
     public int getDamage(){
         return rand.nextInt(damage);  
     }
+
+    public abstract String getIntro();
 }
