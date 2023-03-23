@@ -36,6 +36,7 @@ public class Main {
                                 + "\nYour family back in the village never finds out what happened to you.");
         }
         try (Scanner in = new Scanner(System.in)) {
+            System.out.println("Press any key to exit...");
             in.nextLine();
         }
         System.exit(0);
