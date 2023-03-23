@@ -16,9 +16,8 @@ public class CombatEvent extends Event {
 
     @Override
     public void handleEvent() {
-        super.handleEvent();
         System.out.println("\n#" + enemyIntro + "#\n");
-        while(enemy.getHealth() > 0 && player.isAlive()){
+        while(enemy.getHealth() >= 0 && player.isAlive()){
             outputStatus();
             String action = player.getInput(new String[] {"1","2","3","4","5"});
             handle(action);
@@ -69,7 +68,7 @@ public class CombatEvent extends Event {
         System.out.println(" ");
         System.out.println(enemy.getType() + " striked player for " + enemyDamage);
         System.out.println("-------------------");
-        if(player.getHealth() < 0){
+        if(player.getHealth() <= 0){
             player.died();
         }
     }
