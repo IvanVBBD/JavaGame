@@ -141,6 +141,10 @@ public class Player {
        for(Item item : temp) {
             item.removeFromPlayer();
        }
-       currentEquipped = currentEquipped.stream().filter(Item::getCurse).toList();
+       List<Item> tempCursed = currentEquipped.stream().filter(Item::getCurse).toList();
+       currentEquipped = new LinkedList<Item>();
+       for(Item item : tempCursed){
+            currentEquipped.add(item);
+       }
     }
 }
