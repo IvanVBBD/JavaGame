@@ -1,11 +1,13 @@
 package game;
 import java.util.Random;
 
+import game.EnemyManager.enemyTypes;
+
 public class Skeleton extends Enemy {
     
     static int healthSetting = 5;
     static int damageSetting = 15;
-    static String Type = "Skeleton";
+    static enemyTypes Type = enemyTypes.Skeleton;
     static Random rand = new Random();
     static int skellySkill = 25;
 

@@ -2,16 +2,18 @@ package game;
 
 import java.util.Random;
 
+import game.EnemyManager.enemyTypes;
+
 public abstract class Enemy {
 
-    Enemy(int health, int damage, String type){
+    Enemy(int health, int damage, enemyTypes type){
         this.health = health;
         this.damage = damage;
         this.type = type;
     }
     protected int health = 0;
     protected int damage = 0;
-    private String type = "";
+    private enemyTypes type;
     private Random rand = new Random();
 
     public abstract void damage(int amount);
@@ -20,7 +22,7 @@ public abstract class Enemy {
         return health;
     }
 
-    public String getType(){
+    public enemyTypes getType(){
         return type;
     }
 

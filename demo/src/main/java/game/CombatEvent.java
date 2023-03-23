@@ -1,13 +1,25 @@
 package game;
+
+import java.util.Random;
+
+import game.EnemyManager.enemyTypes;
+
 public class CombatEvent extends Event {
     private Enemy enemy;
     private String enemyIntro;
     private Player player = Main.player;
+    private Boolean fleed = false;
 
-    public CombatEvent() {
+    public CombatEvent(enemyTypes type) {
+        super();
+        enemy = EnemyManager.getEnemy(type);
+        enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
+    }
+
+    public CombatEvent(){
         super();
         enemy = EnemyManager.getEnemy();
-        enemyIntro = enemy.getType() + EnemyManager.getEnemyIntro();
+        enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
     }
 
     @Override
@@ -19,7 +31,7 @@ public class CombatEvent extends Event {
             String action = player.getInput(new String[] {"1","2","3","4"});
             handle(action);
         }
-        if (player.isAlive()) {
+        if (player.isAlive() && !fleed) {
             dropLoot();
         }
     }
@@ -77,7 +89,17 @@ public class CombatEvent extends Event {
 
     private void flee() {
         //This is a hack to make this work. Will need more to be done
-        enemy.damage(enemy.getHealth());
+        Random rand = new Random();
+        fleed = false;
+        if(rand.nextBoolean()){
+            this.fleed = true;
+            player.damage(enemy.getDamage());
+            enemy.damage(enemy.getHealth());
+            System.out.println("\tYou fled :( , kinda L of you");
+        }else{
+            player.damage(enemy.getDamage());
+            System.out.println("\tFlee failed!");
+        }
     }
 
     private void viewPlayerStats() {

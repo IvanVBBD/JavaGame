@@ -2,11 +2,13 @@ package game;
 
 import java.util.Random;
 
+import game.EnemyManager.enemyTypes;
+
 public class Goblin extends Enemy {
     
     static int health = 20;
     static int damage = 10;
-    static String Type = "Goblin";
+    static enemyTypes Type = enemyTypes.Goblin;
     static int goblinLuckThresold = 10;
     static Random rand = new Random();
     Goblin(){

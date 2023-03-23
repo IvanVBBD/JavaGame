@@ -1,9 +1,11 @@
 package game;
 
+import game.EnemyManager.enemyTypes;
+
 public class Zombie extends Enemy {
     static int healthSetting = 30;
     static int damageSetting = 1;
-    static String Type = "Zombie";
+    static enemyTypes Type = enemyTypes.Zombie;
     static int zombieMultiplyer = 2;
     int stench = 0;
 
