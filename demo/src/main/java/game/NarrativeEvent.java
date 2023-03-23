@@ -66,10 +66,10 @@ public class NarrativeEvent extends Event {
             System.out.println("\tYou have been cursed!");
             droppedItem.addToPlayer();
         } else {
-            System.out.println("\tYou have gained:"
+            System.out.println("You have gained:"
                     + "\n\t " + droppedItem.getName()
                     + "\n\t " + droppedItem.getDescription());
-            System.out.println("\t Do you wish to equip the item?"
+            System.out.println("Do you wish to equip the item?"
                     + "\n\t1. Yes"
                     + "\n\t2. No");
             String input = player.getInput(new String[] {"1","2"});
@@ -80,10 +80,10 @@ public class NarrativeEvent extends Event {
     }
     private void rizzHammer() {
         Item rizzler = new RizzHammer();
-        System.out.println("\tYou have gained:"
+        System.out.println("You have gained:"
                 + "\n\t " + rizzler.getName()
                 + "\n\t " + rizzler.getDescription());
-        System.out.println("\t Do you wish to equip the item?"
+        System.out.println("Do you wish to equip the item?"
                 + "\n\t1. Yes"
                 + "\n\t2. No");
         String input = player.getInput(new String[] {"1","2"});
