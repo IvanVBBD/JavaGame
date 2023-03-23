@@ -54,7 +54,7 @@ public class CombatEvent extends Event {
                 viewPlayerStats();
                 break;
             case "5":
-                System.out.println(Main.player.viewItems());
+                Main.player.viewItems();
                 break;
           } 
     }
