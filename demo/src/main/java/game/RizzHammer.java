@@ -2,7 +2,7 @@ package game;
 
 public class RizzHammer extends Item {
     static String description = "All we know is Kayden has never wielded this weapon";
-    static String name = "Rizz Hamer";
+    static String name = "Rizz Hammer";
     static Boolean curse = false;
     static int damage = 20;
     static int armour = -5;
@@ -17,7 +17,7 @@ public class RizzHammer extends Item {
             System.out.println("You are at your maxium item limit!");
             return;
         }
-        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() + this.getDamage());
         Main.player.setArmour(Main.player.getArmour() + this.getArmour());
         Main.player.addItemToPlayer(this);
     }
@@ -28,7 +28,7 @@ public class RizzHammer extends Item {
 
     @Override
     public void removeFromPlayer(){
-        Main.player.setdamage(Main.player.getDamage() - this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() - this.getDamage());
         Main.player.setArmour(Main.player.getArmour() - this.getArmour());
     }
 

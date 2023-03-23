@@ -14,6 +14,7 @@ public class CursedDoll extends Item {
     @Override
     public void addToPlayer(){
         Main.player.setHealth(Main.player.getHealth() + this.getHealth());
+        Main.player.setdamage(Main.player.getMaxDamage() + this.getDamage());
         Main.player.addItemToPlayer(this);
     }
 
@@ -24,6 +25,6 @@ public class CursedDoll extends Item {
 
     @Override
     public void removeFromPlayer(){
-        
+        Main.player.setdamage(Main.player.getMaxDamage() - this.getDamage());
     }
 }

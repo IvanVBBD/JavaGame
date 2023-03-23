@@ -16,7 +16,7 @@ public class KaydensRizz extends Item{
 
     @Override
     public void addToPlayer(){
-        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() + this.getDamage());
         Main.player.setCriticalHitChance(Main.player.getCriticalChance() + this.getCriticalChance());
         Main.player.setHealth(Main.player.getHealth() + this.getHealth());
         Main.player.setArmour(Main.player.getArmour() + this.getArmour());
@@ -32,7 +32,7 @@ public class KaydensRizz extends Item{
 
     @Override
     public void removeFromPlayer(){
-        Main.player.setdamage(Main.player.getDamage() - this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() - this.getDamage());
         Main.player.setCriticalHitChance(Main.player.getCriticalChance() - this.getCriticalChance());
         Main.player.setArmour(Main.player.getArmour() - this.getArmour());
     }

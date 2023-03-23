@@ -13,7 +13,7 @@ public class SpikedNecklace extends Item{
 
     @Override
     public void addToPlayer(){
-        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() + this.getDamage());
         Main.player.addItemToPlayer(this);
     }
 
@@ -24,7 +24,7 @@ public class SpikedNecklace extends Item{
 
     @Override
     public void removeFromPlayer(){
-        Main.player.setdamage(Main.player.getDamage() - this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() - this.getDamage());
     }
 
 }

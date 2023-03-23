@@ -20,7 +20,7 @@ public class GiantsHammer extends Item{
             System.out.println("You are at your maxium item limit!");
             return;
         }
-        Main.player.setdamage(Main.player.getDamage() + this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() + this.getDamage());
         Main.player.setHealth(Main.player.getHealth() + this.getHealth());
         Main.player.addItemToPlayer(this);
     }
@@ -32,6 +32,6 @@ public class GiantsHammer extends Item{
 
     @Override
     public void removeFromPlayer(){
-        Main.player.setdamage(Main.player.getDamage() - this.getDamage());
+        Main.player.setdamage(Main.player.getMaxDamage() - this.getDamage());
     }
 }
