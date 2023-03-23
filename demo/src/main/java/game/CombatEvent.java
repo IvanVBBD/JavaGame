@@ -54,7 +54,7 @@ public class CombatEvent extends Event {
                 viewPlayerStats();
                 break;
             case "5":
-                System.out.println(Main.player.viewItems());
+                Main.player.viewItems();
                 break;
           } 
     }
@@ -64,11 +64,11 @@ public class CombatEvent extends Event {
         int enemyDamage = enemy.getDamage();
         enemy.damage(playerDamage);
         player.damage(enemyDamage);
-        System.out.println("\t-------------------");
-        System.out.println("\t You strike " + enemy.getType() + " for " + playerDamage);
+        System.out.println("-------------------");
+        System.out.println("You strike " + enemy.getType() + " for " + playerDamage);
         System.out.println(" ");
-        System.out.println("\t" + enemy.getType() + " striked player for " + enemyDamage);
-        System.out.println("\t-------------------");
+        System.out.println(enemy.getType() + " striked player for " + enemyDamage);
+        System.out.println("-------------------");
         if(player.getHealth() < 0){
             player.died();
         }
@@ -107,10 +107,10 @@ public class CombatEvent extends Event {
         if (droppedItem == null) {
             return;
         }
-        System.out.println("\tItem Dropped:"
-                            + "\n\t\t" + droppedItem.getName()
-                            + "\n\t\t" + droppedItem.getDescription());
-        System.out.println("\t" + droppedItem.displayItemStats());
+        System.out.println("Item Dropped:"
+                            + "\n\t" + droppedItem.getName()
+                            + "\n\t" + droppedItem.getDescription());
+        System.out.println(droppedItem.displayItemStats());
         if (droppedItem.getCurse().equals(false)) {
             handleNormalItem(droppedItem);
         } else if(droppedItem.getCurse().equals(true)){
@@ -119,9 +119,9 @@ public class CombatEvent extends Event {
     }
 
     private void handleNormalItem(Item droppedItem) {
-        System.out.println("\tDo you wish to equip the item?"
-                            + "\n\t\t1. Yes"
-                            + "\n\t\t2. No");
+        System.out.println("Do you wish to equip the item?"
+                            + "\n\t1. Yes"
+                            + "\n\t2. No");
         String input = player.getInput(new String[] {"1","2"});
         if(input.equals("1")){
             equip(droppedItem);

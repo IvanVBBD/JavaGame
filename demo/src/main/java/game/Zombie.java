@@ -32,9 +32,9 @@ public class Zombie extends Enemy {
     @Override
     public int getDamage(){
         stench++;
-        System.out.println("\t============");
-        System.out.println("\tThe zombies stench grows worse with each engagement!");
-        System.out.println("\t============");
+        System.out.println("============");
+        System.out.println("The zombies stench grows worse with each engagement!");
+        System.out.println("============");
         return stench*super.damage*zombieMultiplyer;
 
     }
