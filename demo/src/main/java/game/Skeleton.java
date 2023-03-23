@@ -5,7 +5,7 @@ import game.EnemyManager.enemyTypes;
 
 public class Skeleton extends Enemy {
     
-    static int healthSetting = 5;
+    static int healthSetting = 10;
     static int damageSetting = 15;
     static enemyTypes Type = enemyTypes.Skeleton;
     static Random rand = new Random();

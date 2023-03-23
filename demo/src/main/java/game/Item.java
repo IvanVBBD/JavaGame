@@ -48,6 +48,14 @@ public abstract class Item {
         return this.criticalHitChance;
     }
 
+    protected Boolean canAddToPlayer(){
+        return Main.player.getItemCount() < playerVariables.maxItems;
+    }
+
+    public abstract String displayItemStats();
+
     public abstract void addToPlayer();
+
+    public abstract void removeFromPlayer();
 
 }

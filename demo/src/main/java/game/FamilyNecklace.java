@@ -16,6 +16,21 @@ public class FamilyNecklace extends Item{
 
     @Override
     public void addToPlayer(){
+        if(!canAddToPlayer()){
+            System.out.println("You are at your maxium item limit!");
+            return;
+        }
         Main.player.setCriticalHitChance(Main.player.getCriticalChance() + this.getCriticalChance());
+        Main.player.addItemToPlayer(this);
+    }
+
+    @Override
+    public String displayItemStats(){
+        return "\tCritical Hit Chance: " + criticalHitChance;
+    }
+
+    @Override
+    public void removeFromPlayer(){
+        Main.player.setCriticalHitChance(Main.player.getCriticalChance() - this.getCriticalChance());
     }
 }

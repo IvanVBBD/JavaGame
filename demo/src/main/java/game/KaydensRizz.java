@@ -20,5 +20,20 @@ public class KaydensRizz extends Item{
         Main.player.setCriticalHitChance(Main.player.getCriticalChance() + this.getCriticalChance());
         Main.player.setHealth(Main.player.getHealth() + this.getHealth());
         Main.player.setArmour(Main.player.getArmour() + this.getArmour());
+        Main.player.addItemToPlayer(this);
+
+        
+    }
+
+    @Override
+    public String displayItemStats(){
+        return "\tDamage: " + damage + "\n" + "\tArmour: " + armour + "\n" + "\tHealth: " + health + "\n" + "\tCritical Hit Chance: " + criticalHitChance;
+    } 
+
+    @Override
+    public void removeFromPlayer(){
+        Main.player.setdamage(Main.player.getDamage() - this.getDamage());
+        Main.player.setCriticalHitChance(Main.player.getCriticalChance() - this.getCriticalChance());
+        Main.player.setArmour(Main.player.getArmour() - this.getArmour());
     }
 }

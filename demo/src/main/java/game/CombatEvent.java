@@ -28,7 +28,7 @@ public class CombatEvent extends Event {
         System.out.println("\n#" + enemyIntro + "#\n");
         while(enemy.getHealth() > 0 && player.isAlive()){
             outputStatus();
-            String action = player.getInput(new String[] {"1","2","3","4"});
+            String action = player.getInput(new String[] {"1","2","3","4","5"});
             handle(action);
         }
         if (player.isAlive() && !fleed) {
@@ -43,7 +43,8 @@ public class CombatEvent extends Event {
                             + "\n\t1. Attack "
                             + "\n\t2. Drink Health Potion "
                             + "\n\t3. Flee"
-                            + "\n\t4. View Player Stats");
+                            + "\n\t4. View Player Stats"
+                            + "\n\t5. View Player Items");
     }
 
     private void handle(String action) {
@@ -59,6 +60,9 @@ public class CombatEvent extends Event {
                 break;
             case "4":
                 viewPlayerStats();
+                break;
+            case "5":
+                System.out.println(Main.player.viewItems());
                 break;
           } 
     }
@@ -114,6 +118,7 @@ public class CombatEvent extends Event {
         System.out.println("\tItem Dropped:"
                             + "\t " + droppedItem.getName()
                             + "\t " + droppedItem.getDescription());
+        System.out.println(droppedItem.displayItemStats());
         if (droppedItem.getCurse().equals(false)) {
             handleNormalItem(droppedItem);
         } else if(droppedItem.getCurse().equals(true)){

@@ -11,6 +11,7 @@ public class LootTable {
     private static int commonThresold = 30;
     private static int rareThresold = 90;
     private static Random rand = new Random();
+
     private static List<Item> rareDropTable = List.of(
         new RizzHammer(),
         new GoldenArmour(),
