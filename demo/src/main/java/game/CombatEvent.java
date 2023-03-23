@@ -16,7 +16,6 @@ public class CombatEvent extends Event {
 
     @Override
     public void handleEvent() {
-        super.handleEvent();
         System.out.println("\n#" + enemyIntro + "#\n");
         while(enemy.getHealth() > 0 && player.isAlive()){
             outputStatus();
