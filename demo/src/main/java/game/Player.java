@@ -42,7 +42,17 @@ public class Player {
             multiplyer = 2;
             System.out.println("\tPlayer Critical Hit!");
         }
-        return rand.nextInt(damage*multiplyer);
+        int calculatedDamage = 0;
+        if(damage > 0){
+            calculatedDamage = rand.nextInt(damage*multiplyer) + (int)(0.2*(damage));
+            if(calculatedDamage < 0){
+                calculatedDamage = 0;
+            }
+        }else{
+            calculatedDamage = 0;
+        }
+       
+        return calculatedDamage;
     }
 
     public int getMaxDamage(){
