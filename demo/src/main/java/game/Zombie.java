@@ -1,17 +1,26 @@
 package game;
 
+import java.util.Random;
 import game.EnemyManager.enemyTypes;
 
 public class Zombie extends Enemy {
+    private static String[] previews = {"Zombie intro 1", "Zombie intro 2", "Zombie into 3"};
+
     static int healthSetting = 30;
     static int damageSetting = 1;
     static enemyTypes Type = enemyTypes.Zombie;
     static int zombieMultiplyer = 2;
+    static Random rand = new Random();
     int stench = 0;
+
+    private String preview;
 
     Zombie(){
         super(healthSetting,damageSetting,Type);
+        preview = previews[rand.nextInt(3)];
     }
+
+    public String getPreview() {return preview;}
 
     @Override
     public void damage(int amount){

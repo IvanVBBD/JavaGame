@@ -5,15 +5,23 @@ import java.util.Random;
 import game.EnemyManager.enemyTypes;
 
 public class Goblin extends Enemy {
+
+    private static String[] previews = {"Goblin intro 1", "Goblin intro 2", "Goblin into 3"};
     
     static int health = 20;
     static int damage = 10;
     static enemyTypes Type = enemyTypes.Goblin;
     static int goblinLuckThresold = 10;
     static Random rand = new Random();
+
+    private String preview;
+
     Goblin(){
         super(health,damage,Type);
+        preview = previews[rand.nextInt(3)];
     }
+
+    public String getPreview() {return preview;}
 
     @Override
     public void damage(int amount){

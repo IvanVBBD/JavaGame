@@ -17,8 +17,8 @@ public class CombatEvent extends Event {
     }
 
     public CombatEvent(){
-        super();
         enemy = EnemyManager.getEnemy();
+        super.preview = enemy.getPreview();
         enemyIntro = enemy.getType().toString() + EnemyManager.getEnemyIntro();
     }
 
