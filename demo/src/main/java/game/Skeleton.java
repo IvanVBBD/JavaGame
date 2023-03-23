@@ -5,9 +5,7 @@ import game.EnemyManager.enemyTypes;
 
 public class Skeleton extends Enemy {
 
-    private static String[] previews = {"You hear something rattling.", 
-                                        "Skele intro 2", 
-                                        "Skele into 3"};
+    private static String[] previews = {"You hear something rattling."};
     
     static int healthSetting = 10;
     static int damageSetting = 15;
@@ -19,7 +17,7 @@ public class Skeleton extends Enemy {
 
     Skeleton(){
         super(healthSetting,damageSetting,Type);
-        preview = previews[rand.nextInt(3)];
+        preview = previews[rand.nextInt(1)];
     }
 
     public String getPreview() {return preview;}
