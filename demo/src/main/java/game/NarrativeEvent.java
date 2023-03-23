@@ -122,7 +122,10 @@ public class NarrativeEvent extends Event {
                         player.damage(player.getHealth()-1);
                     }
                     if (variant == 2) {
-                        //getRobbed()
+                        System.out.println("\tAs the person stands up, their cloak slips. The rizz is too intense and knocks you unconscious");
+                        player.removeAllItems();
+                        System.out.println("\tWhen you come to, you notice that all your loot is gone."
+                                +"\n\tA note next to you says: Never should have come here - Rizzler")
                     }
                 }
                 break;
