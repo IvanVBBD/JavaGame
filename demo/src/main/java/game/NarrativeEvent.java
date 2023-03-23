@@ -37,9 +37,9 @@ public class NarrativeEvent extends Event {
 
     @Override
     public void handleEvent() {
-        System.out.println("----------------------------------------"
+        System.out.println("\n---"
                          + storyIntros[variant]
-                         + "----------------------------------------");
+                         + "---");
         System.out.println("What next?"
                         +"\n\t 1. "+actions[variant][0]
                         +"\n\t 2. "+actions[variant][1]);
