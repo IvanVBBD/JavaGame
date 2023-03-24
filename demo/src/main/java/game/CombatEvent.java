@@ -18,7 +18,7 @@ public class CombatEvent extends Event {
     public void handleEvent() {
         System.out.println("\n----------------" + super.preview + "----------------");
         System.out.println("\n#" + enemyIntro + "#\n");
-        while(enemy.getHealth() >= 0 && player.isAlive()){
+        while(enemy.getHealth() > 0 && player.isAlive()){
             outputStatus();
             String action = player.getInput(new String[] {"1","2","3","4","5"});
             handle(action);
