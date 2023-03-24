@@ -22,6 +22,9 @@ public class CombatEvent extends Event {
             outputStatus();
             String action = player.getInput(new String[] {"1","2","3","4","5"});
             handle(action);
+            if(player.getHealth() <= 0){
+                player.died();
+            }
         }
         if (player.isAlive() && !fleed) {
             dropLoot();
@@ -75,9 +78,6 @@ public class CombatEvent extends Event {
             System.out.println(enemy.getType() + " striked player for " + (placeHolderEnemyDamage - Main.player.getArmour()));
         }
         System.out.println("-------------------");
-        if(player.getHealth() <= 0){
-            player.died();
-        }
     }
 
     private void drinkHealthPotion() {
