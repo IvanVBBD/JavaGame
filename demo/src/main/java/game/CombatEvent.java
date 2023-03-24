@@ -93,15 +93,17 @@ public class CombatEvent extends Event {
         //This is a hack to make this work. Will need more to be done
         Random rand = new Random();
         fleed = false;
+        int enemyDamage = enemy.getDamage();
         if(rand.nextBoolean()){
             this.fleed = true;
-            player.damage(enemy.getDamage());
+            player.damage(enemyDamage);
             enemy.damage(enemy.getHealth());
             System.out.println("\tYou fled :( , kinda L of you");
         }else{
-            player.damage(enemy.getDamage());
+            player.damage(enemyDamage);
             System.out.println("\tFlee failed!");
         }
+        System.out.println("\t" + enemy.getType().toString() + " striked player for " + (enemyDamage - Main.player.getArmour()) + "\n");
     }
 
     private void viewPlayerStats() {
